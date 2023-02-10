@@ -1,0 +1,15 @@
+ // TS //
+ 
+ changeTextToUppercase(field) {
+  const obj = {};
+  obj[field] = this.appuserform.controls[field].value.toUpperCase();
+  this.appuserform.patchValue(obj);
+}
+
+
+// HTML //
+
+ <mat-form-field class="UserTypefield" floatLabel="always">
+            <mat-label>Branch Name</mat-label>
+            <input (input)="changeTextToUppercase('name')" autocomplete="off" matInput id="UserTypefield" placeholder="Branch Name" formControlName="branchname">
+</mat-form-field>
