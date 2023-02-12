@@ -1,0 +1,23 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <h1 class="text-center text-secondary">Animations</h1>
+            <div class="col-md-6">
+                <button class="btn btn-primary mx-2" (click)="onAnimate()">Animate</button>
+                <button class="btn btn-primary" (click)="onShrink()">Shrink</button>
+                <hr>
+                <div [@divState]='state' style="width:100px; height:100px"></div>
+                <br>
+                <div [@wildState]='wildState' style="width:100px; height:100px"></div>
+            </div>
+            <div class="col-md-6">
+                <input type="text" #input>
+                <button class="btn btn-primary mx-1" (click)="onAdd(input.value)">Add Item!</button>
+                <hr>
+                <ul class="list-group">
+                    <li class="list-group-item" [@list1] (click)="onDelete(item)" *ngFor="let item of list">{{item}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
