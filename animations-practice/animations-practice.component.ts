@@ -54,13 +54,11 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
       state('in', style({
         opacity: 1,
         transform: 'translateX(0)',
-        cursor: 'pointer'
       })),
       transition('void => *', [
         style({
           opacity: 0,
           transform: 'translateX(-100px)',
-          cursor: 'pointer'
         }),
         animate(300)]),
 
@@ -68,11 +66,49 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
         animate(300, style({
           opacity: 0,
           transform: 'translateX(100px)',
-          cursor: 'pointer'
         }))]),
     ]),
 
+    trigger('list2', [
+      state('in', style({
+        opacity: 1,
+        transform: 'translateX(0)',
+      })),
+      transition('void => *', [animate(1000, keyframes([
+        style({
+          opacity: 0,
+          transform: 'translateX(-100px)',
+          offset: 0
+        }),
+        style({
+          opacity: 0.5,
+          transform: 'translateX(-50px)',
+          offset: 0.3
+        }),
+        style({
+          opacity: 1,
+          transform: 'translateX(-20px)',
+          offset: 0.8
+        }),
+        style({
+          opacity: 1,
+          transform: 'translateX(0px)',
+          offset: 1
+        })
+      ]))]),
 
+      transition('* => void', [
+        group([
+          animate(300, style({
+           color:'red'
+          })),
+          animate(800, style({
+            opacity: 0,
+            transform: 'translateX(100px)',
+          }))
+        ])
+      ]),
+    ]),
   ]
 })
 export class AnimationsPracticeComponent implements OnInit {
@@ -102,6 +138,14 @@ export class AnimationsPracticeComponent implements OnInit {
 
   onDelete(item) {
     this.list.splice(this.list.indexOf(item), 1)
+  }
+  
+  animationStarted(event){
+    console.log(event)
+  }
+
+  animationEnded(event){
+    console.log(event)
   }
 
 }
