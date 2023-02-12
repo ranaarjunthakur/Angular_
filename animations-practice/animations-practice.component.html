@@ -6,7 +6,7 @@
                 <button class="btn btn-primary mx-2" (click)="onAnimate()">Animate</button>
                 <button class="btn btn-primary" (click)="onShrink()">Shrink</button>
                 <hr>
-                <div [@divState]='state' style="width:100px; height:100px"></div>
+                <div (@divState.start)="animationStarted($event)" (@divState.done)="animationEnded($event)" [@divState]='state' style="width:100px; height:100px"></div>
                 <br>
                 <div [@wildState]='wildState' style="width:100px; height:100px"></div>
             </div>
@@ -16,6 +16,8 @@
                 <hr>
                 <ul class="list-group">
                     <li class="list-group-item" [@list1] (click)="onDelete(item)" *ngFor="let item of list">{{item}}</li>
+                    <li class="list-group-item my-1" [@list2] (click)="onDelete(item)" *ngFor="let item of list">{{item}}</li>
+
                 </ul>
             </div>
         </div>
