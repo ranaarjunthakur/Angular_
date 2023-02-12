@@ -1,0 +1,32 @@
+
+<section>
+    <div class="container">
+        <div class="row">
+            <h1>* Pass Parameters first page to child page using (Params)</h1>
+            <div class="col-md-4" *ngFor="let products of Products">
+                <div>
+                    <div class="card">
+                        <h2>ID-{{products.id}}</h2>
+                        <h4>NAME-{{products.name}}</h4>
+                        <span>DESCRIPTION-{{products.description}}</span>
+                        <a [routerLink]="['/childPage/', products.id,products.name,products.description]">Pass data child page</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h1>* Pass Queryparams(?=true) , fragment(#) first page to Second page using (QueryParams,Fragments)</h1>
+            <div class="col-md-4" *ngFor="let products of Products">
+                <div>
+                    <div class="card">
+                        <h2>ID-{{products.id}}</h2>
+                        <h4>NAME-{{products.name}}</h4>
+                        <span>DESCRIPTION-{{products.description}}</span>
+                        <a  [routerLink]="['/secondPage',5,'edit']" [queryParams]="{allowEdit:'5'}" fragment="loading">Pass Query params, fragments to child page</a>
+                        <button (click)="navToPage(4)"  class="btn-primary">Onclick sent (QueryPArams)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
