@@ -1,0 +1,91 @@
+<section>
+    <div class="container">
+        <h1 appRainbow class="text-center text-uppercase text-xxl-center mt-2">Angular</h1>
+        <div class="row">
+
+             <!-- //TODO: PARENT COMPONENT -->
+
+            <div class="col-md-6">
+                <h3 appAppTest class="text-center">{{title}}</h3>
+                <mat-card class="example-card mt-2">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">Email address</label>
+                              <input appRainbow #email type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputPassword1">Password</label>
+                              <input appRainbow #password type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            </div>
+                            <button (click)="transferData(email.value, password.value)" type="submit" class="btn btn-primary mt-2">Submit</button>
+                          </form>
+                          <strong>{{response}}</strong>
+                    </div>
+                </mat-card>
+                <mat-card>
+                    <form>    
+                        <div class="order-tracking">    
+                         <input class="form-control mb-1" name="yourname" type="text" [(ngModel)]="name" placeholder="Enter your name"/>    
+                         <button type="button" (click)="submit()" class="btn btn-primary">Sent name child</button> 
+                         <h3>{{this.message}}</h3>    
+                        </div>    
+                      </form>  
+                </mat-card>
+                <mat-card>
+                    <h5 class="text-center">Child data</h5>
+                    {{data}}
+                    <br>
+                    <small>{{msg}}</small>
+                </mat-card>
+            </div>
+
+            <!-- //TODO: CHILD COMPONENT -->
+
+            <div class="col-md-6">
+                <h3 appAppTest class="text-center">Child Component</h3>
+                <mat-card>
+                    <app-child-hotel [item]="hotels" [emailData]="inputEmail"  [passwordData]="inputPassword" [objData]="inputObj" (dataupdateevent)="updateTitle($event)" [Name]="sendToChild" (getResponse)="getResponse($event)" (updateChildData)="updateData($event)"  name=""></app-child-hotel>
+<!-- 
+                    <input class="form-control mb-1" #hotel type="text" name="hotel" id="hotel" placeholder="hotel name">
+                    <input class="form-control" #location type="text" name="hotel" id="hotel" placeholder="hotel location">
+                    <button (click)="UpdateHotels(hotel.value,location.value)" class="btn btn-warning mt-1">Add Hotels</button> -->
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TODO: DIRECTIVES  INFO -->
+
+<section class="bg-dark text-white-50 my-3 p-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <button  class="btn btn-primary" (click)="onlyOdd = !onlyOdd">Only Show Odd Numbers</button>
+                <br><br>
+                <ul class="list-group">
+                    <div *ngIf="onlyOdd">
+                        <li class="list-group-item" 
+                         [ngClass]="{odd: odd %2 !== 0}" 
+                         [ngStyle]="{fontWeight: odd % 2 !== 0 ? 'bold' : 'bolder'}"
+                         *ngFor="let odd of oddNumbers">
+                            {{odd}}
+                        </li>
+                    </div>
+                    <div *ngIf="!onlyOdd">
+                        <li class="list-group-item"
+                            [ngClass]="{odd: even %2 !== 0}" 
+                            [ngStyle]="{fontWeight: even % 2 !== 0 ? 'bold' : 'bolder'}"
+                            *ngFor="let even of evenNumbers">
+                            {{even}}
+                        </li>
+                    </div>
+                </ul>
+            </div>
+            <p appBasicHighlight  ngClass="my-2">Style me Basic Directives.</p>
+            <p  appBetterHighlight ngClass="my-2">Style me a Better Directives.</p>
+
+        </div>
+    </div>
+</section>

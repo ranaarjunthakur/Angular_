@@ -1,0 +1,52 @@
+<h4>Email is <b>{{emailData}}</b></h4>
+<h4>Password is <b>{{passwordData}}</b></h4>
+<br>
+<h4>Email is <b>{{objData.email}}</b></h4>
+<h4>Password is <b>{{objData.password}}</b></h4>
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Password</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item  of  listArray; let i=index">
+      <tr>
+        <th scope="row">{{i+1}}</th>
+        <td>{{item.email}}</td>
+        <td>{{item.password}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br>
+ 
+  <div class="form-group">
+    <input  #title  class="form-control" placeholder="change title Parent component">
+  </div>
+  <button (click)="dataupdateevent.emit(title.value)" type="submit" class="btn btn-primary mt-1">Click</button>
+
+<br>
+
+  <div class="mt-2">
+    <ul *ngFor="let hotel of item">
+      <li>{{hotel.name}} : <i>{{hotel.location}}</i></li>
+    </ul>
+  </div>
+  
+
+  <div class="card-body">    
+    <div class="order-tracking">    
+      {{this.Name}}    
+    </div>    
+    <button type="button" class=" btn btn-danger my-1" (click)="onClick()">Ok</button>
+  </div>  
+
+
+  <div>
+    <input #val type="text" class="form-control">
+    <button (click)="updateChildData.emit(val.value)" type="button" class="btn btn-warning my-1">Update parent component data</button>
+  </div>  
