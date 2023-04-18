@@ -1,0 +1,38 @@
+<section class="my-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <strong class="border p-1 my-2  rounded-2 text-muted text-uppercase">1- Getting Elements using DOM</strong>
+                <div>
+                    <h1 id="heading">Javascript Is Awesome !</h1>
+                    <h1 class="heading">Angular Is Phenomenal !</h1>
+                </div>
+                <strong class="border p-1  my-2 rounded-2 text-muted text-uppercase">2- Creating Elements using DOM Manipulation.</strong>
+                <div class="parent">
+                    <h3>This is previous sibling Element</h3>
+                    <h2 #ele class="child">Child Element !</h2>
+                    <h3>This is sibling Element</h3>
+                </div>
+
+                <div class="main">
+
+                </div>
+                <strong class="border p-1  my-2 rounded-2 text-muted text-uppercase">3- DOM Events</strong>
+
+                <div class="hero">
+                    <h1 #heading id="heading">Javascript Is Awesome!</h1>
+                    <button class="btn btn-primary" id="btn">Click Me</button>
+                </div> 
+            </div>
+
+            <div class="col-md-6">
+                <button  mat-raised-button color="accent" class="mainButton">Main Button</button>
+                <div class=" SunBtn">
+                    <img #img id="img" class="img-fluid sun moon" src="{{ show ? sun : moon}}" />
+                    <button  id="toggle" mat-raised-button color="warn" class="btn mt-3 SunBtn">{{show ? 'Turn OFF' : 'Turn ON'}}</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
