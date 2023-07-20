@@ -28,11 +28,11 @@ export class ReactiveFormComponent {
 
     this.userForm = this.formBuilder.group({
         'name' : ['',[Validators.minLength(10),Validators.required]],
-        'email': ['', {validators: [Validators.required,Validators.email],
+        'email': ['', {validators: [Validators.required,Validators.email,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")],
           updateOn: 'blur'}],
         'city': [this.city,[Validators.required]],
         'citizen' : ['indian',[Validators.required]],
-        'password': ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]]
+        'password': ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16),Validators.pattern("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}$")]]]
     })
   }
 
