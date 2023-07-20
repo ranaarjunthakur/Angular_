@@ -12,7 +12,7 @@
       </mat-form-field>
       <mat-form-field class="form-element">
         <input matInput placeholder="Email address" formControlName="email">
-        <mat-error *ngIf="userForm.get('email').hasError('required') && !form.get('email').valid  || form.get('email').errors?.pattern">Please Enter Valid Email Address</mat-error>
+        <mat-error *ngIf="userForm.get('email').hasError('required') && !userForm.get('email').valid  || userForm.get('email').errors?.pattern">Please Enter Valid Email Address</mat-error>
       </mat-form-field>
       <mat-form-field class="form-element">
         <input matInput placeholder="city" formControlName="city" required>
@@ -22,6 +22,8 @@
       </mat-form-field>
       <mat-form-field class="form-element">
         <input matInput type="password" placeholder="password" formControlName="password">
+        <mat-error *ngIf="UserForm.get('password').hasError('required')">Please Enter Password</mat-error>
+        <mat-error class="mb-2" *ngIf="userForm.get('password').errors?.pattern"> Password must contain at least 1 number, 1 uppercase and a lowercase letter and at least 8 characters.</mat-error>
       </mat-form-field>
   
       <div class="form-element">
