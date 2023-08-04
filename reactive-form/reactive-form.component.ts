@@ -12,10 +12,30 @@ import { FormBuilder, FormGroup, FormControl, Validators, AbstractControl } from
 })
 export class ReactiveFormComponent {
   userForm: FormGroup;
-  
   city= 'Noida'
   post;
-  constructor(private formBuilder: FormBuilder) { }
+  formStatus;
+  
+  constructor(private formBuilder: FormBuilder) {
+     this.userForm = new FormGroup({
+    firstName: new FormControl('',[Validators.required,Validators.minLength(5), Validators.pattern('^[a-zA-Z]+$')]),
+    lastName: new FormControl('',[Validators.required,Validators.maxLength(15)]),
+    email:new FormControl('',[Validators.required,Validators.email]),
+    address: new FormGroup({
+       address1: new FormControl('',Validators.required)
+    }),
+    companies: new FormArray([
+        new FormControl('Vserve World'),
+        new FormControl('IOanyT Innovations'),
+        new FormControl('WebTech Solutions')
+    ])
+  })
+
+ this.userForm.statusChanges.subscribe((status)=>{
+   console.log(status)
+   this.formStatus=  status
+ })
+  }
 
   ngOnInit() {
     // this.userForm = new FormGroup({
