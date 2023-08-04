@@ -46,3 +46,101 @@
    <div class="container">
       {{ post | json }}
     </div>
+
+
+///////////////////////////////////////Another Reactive Form///////////////////////////////////////////////////
+<div class="px-10">
+  <h5 class="font-bold my-2">Create User</h5>
+  <form
+    [formGroup]="userForm"
+    (ngSubmit)="onSubmit()"
+    class="border p-3 rounded shadow-lg myRecForm"
+    [ngClass]='formStatus'
+  >
+    <div>
+      <label Class="w-full text-md font-light"
+        >First Name
+        <div class="relative w-full pt-2 flex items-center">
+          <input
+            type="text"
+            formControlName="firstName"
+            required
+            class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
+            placeholder="First Name"
+          />
+        </div>
+      </label>
+    </div>
+    <div>
+      <label Class="w-full text-md font-light"
+        >Last Name
+        <div class="relative w-full pt-2 flex items-center">
+          <input
+            type="text"
+            formControlName="lastName"
+            class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
+            placeholder="Last Name"
+          />
+        </div>
+      </label>
+    </div>
+    <div>
+      <label Class="w-full text-md font-light"
+        >Email
+        <div class="relative w-full pt-2 flex items-center">
+          <input
+            type="email"
+            formControlName="email"
+            class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
+            placeholder="Email address"
+          />
+        </div>
+      </label>
+    </div>
+    <div>
+      <label Class="w-full text-md font-light"
+        >Address
+        <div
+          class="relative w-full pt-2 flex items-center"
+          formGroupName="address"
+        >
+          <input
+            type="text"
+            formControlName="address1"
+            class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
+            placeholder="Address"
+          />
+        </div>
+      </label>
+    </div>
+    <div formArrayName="companies">
+      <label Class="w-full text-md font-light"
+        >companies
+        <div
+          *ngFor="
+            let company of userForm.get('companies').controls;
+            let i = index
+          "
+          class="relative w-full pt-2 flex items-center"
+        >
+          <input
+            type="text"
+            formControlName="{{ i }}"
+            class="border border-grey-600 w-full h-10 py-2 px-4 text-sm rounded"
+            placeholder="Comapny"
+          />
+        </div>
+      </label>
+    </div>
+    <!-- {{userForm.value | json}} -->
+    <div class="mt-10">
+      <button [disabled]='!userForm.valid' type="submit" class="bg-blue-600 p-2 text-white rounded w-32 submitBtn"
+      [ngClass]='formStatus'>
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+
+
+
